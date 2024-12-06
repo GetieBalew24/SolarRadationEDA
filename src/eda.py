@@ -12,3 +12,30 @@ def load_data(filepath):
 # Summary Statistics
 def summary_statistics(df):
     return df.describe()
+
+# Data Quality Check:
+def data_quality_check(df):
+    missing_values = df.isnull().sum() 
+    negative_values = df[['GHI', 'DNI', 'DHI']][(df['GHI'] < 0) | (df['DNI'] < 0) | (df['DHI'] < 0)] 
+    return missing_values, negative_values 
+
+
+# Time Series Analysis
+
+def time_series_analysis(df):
+    plt.figure(figsize=(15, 8))
+    plt.plot(df['Timestamp'], df['GHI'], label='GHI')
+    plt.plot(df['Timestamp'], df['DNI'], label='DNI')
+    plt.plot(df['Timestamp'], df['DHI'], label='DHI')
+    plt.plot(df['Timestamp'], df['Tamb'], label='Tamb')
+    plt.legend()
+    plt.xlabel('Time')
+    plt.ylabel('Values')
+    plt.title('Time Series Analysis')
+    plt.show()
+
+
+
+
+
+
