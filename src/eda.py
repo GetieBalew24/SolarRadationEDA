@@ -34,6 +34,15 @@ def time_series_analysis(df):
     plt.title('Time Series Analysis')
     plt.show()
 
+#Correlation Analysis:
+def correlation_analysis(df):
+    correlation_matrix = df.corr()
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+    plt.title('Correlation Matrix')
+    plt.show()
+
+
 
 
 
