@@ -34,12 +34,24 @@ def time_series_analysis(df):
     plt.title('Time Series Analysis')
     plt.show()
 
-#Correlation Analysis:
+#Correlation Analysis
 def correlation_analysis(df):
-    correlation_matrix = df.corr()
+    variables = ['GHI', 'DNI', 'DHI', 'TModA', 'TModB', 'WS', 'WSgust', 'WD']
+    df_selected = df[variables]
+    correlation_matrix = df_selected.corr()
     plt.figure(figsize=(12, 8))
-    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
-    plt.title('Correlation Matrix')
+    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
+    plt.title('Correlation Matrix: Solar Radiation, Temperature, and Wind Conditions')
+    plt.show()
+    # Pair plot for all selected variables
+    sns.pairplot(df_selected, diag_kind='kde')
+    plt.suptitle("Pair Plot: Solar Radiation, Temperature, and Wind Conditions", y=1.02)
+    plt.show()
+    # Scatter plots: Wind conditions vs Solar Irradiance
+    wind_vars = ['WS', 'WSgust', 'WD']
+    solar_vars = ['GHI', 'DNI', 'DHI']
+    sns.pairplot(df, x_vars=wind_vars, y_vars=solar_vars, kind='scatter')
+    plt.suptitle("Scatter Matrices: Wind Conditions vs Solar Irradiance", y=1.02)
     plt.show()
 
 
