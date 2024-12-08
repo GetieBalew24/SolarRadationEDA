@@ -1,6 +1,7 @@
 import streamlit as st
 import sys
 import os
+# Dashboard Development using streamlit
 # Get the path of the project directory
 project_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))
 # Add the src directory to the Python path

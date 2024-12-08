@@ -3,10 +3,10 @@ import streamlit as st
 st.set_page_config(
     page_title="EDA Dashboard",
     page_icon=":bar_chart:",
-    layout="wide",  # Layout type: 'centered' or 'wide'
+    layout="wide", 
   
 )
-
+# Home page
 st.write("# Welcome to EDA for MoonLight Energy Solution Analysis! 📊")
 st.write("## click Generate Report link to view EDA Reports 📊")
 st.markdown(
