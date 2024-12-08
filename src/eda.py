@@ -53,8 +53,59 @@ def correlation_analysis(df):
     sns.pairplot(df, x_vars=wind_vars, y_vars=solar_vars, kind='scatter')
     plt.suptitle("Scatter Matrices: Wind Conditions vs Solar Irradiance", y=1.02)
     plt.show()
+# wind analysis
+def wind_analysis(df):
+    plt.figure(figsize=(15, 8))
+    plt.plot(df['Timestamp'], df['WS'], label='Wind Speed')
+    plt.plot(df['Timestamp'], df['WSgust'], label='Wind Gust')
+    plt.legend()
+    plt.xlabel('Time')
+    plt.ylabel('Wind Speed (m/s)')
+    plt.title('Wind Speed and Gust over Time')
+    plt.show()
+def wind_analysis1(df):
+     # Convert wind direction from degrees to radians for polar plot
+    wind_direction_rad = np.deg2rad(df['WD'])
+    wind_speed = df['WS']
 
+    # Create a radial bar plot
+    plt.figure(figsize=(10, 8))
+    ax = plt.subplot(111, polar=True)
+    bars = ax.bar(wind_direction_rad, wind_speed, width=0.1, color='skyblue', edgecolor='black', alpha=0.7)
 
+    # Customize the polar plot
+    ax.set_theta_zero_location('N')
+    ax.set_theta_direction(-1)
+    ax.set_title("Radial Plot: Wind Speed and Direction", va='bottom')
+    plt.show()
+
+# Temperature Analysis 
+def temperature_analysis(df):
+    # Scatter plots to show RH vs Temperature and Solar Radiation components
+    plt.figure(figsize=(15, 8))
+
+    # Subplot for RH vs Temperatures
+    plt.subplot(1, 2, 1)
+    plt.scatter(df['RH'], df['TModA'], label='Module A Temperature', alpha=0.7, color='blue')
+    plt.scatter(df['RH'], df['TModB'], label='Module B Temperature', alpha=0.7, color='green')
+    plt.scatter(df['RH'], df['Tamb'], label='Ambient Temperature', alpha=0.7, color='orange')
+    plt.xlabel('Relative Humidity (%)')
+    plt.ylabel('Temperature (°C)')
+    plt.title('RH vs Temperatures')
+    plt.legend()
+
+    # Subplot for RH vs Solar Radiation components
+    plt.subplot(1, 2, 2)
+    plt.scatter(df['RH'], df['GHI'], label='GHI', alpha=0.7, color='red')
+    plt.scatter(df['RH'], df['DNI'], label='DNI', alpha=0.7, color='purple')
+    plt.scatter(df['RH'], df['DHI'], label='DHI', alpha=0.7, color='brown')
+    plt.xlabel('Relative Humidity (%)')
+    plt.ylabel('Solar Radiation')
+    plt.title('RH vs Solar Radiation')
+    plt.legend()
+
+    plt.tight_layout()
+    plt.show()
 
 
 
