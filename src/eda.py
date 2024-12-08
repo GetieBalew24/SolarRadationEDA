@@ -107,6 +107,26 @@ def temperature_analysis(df):
     plt.tight_layout()
     plt.show()
 
+# Historgram Analysis
+def histograms(df):
+    # Histograms for solar radiation variables
+    df[['GHI', 'DNI', 'DHI']].hist(bins=20, figsize=(12, 8), color='skyblue', edgecolor='black')
+    plt.suptitle('Histograms of Solar Radiation Variables', fontsize=16)
+    plt.tight_layout()
+    plt.show()
+
+    # Histograms for temperature variables
+    df[['Tamb', 'TModA', 'TModB']].hist(bins=20, figsize=(12, 8), color='lightgreen', edgecolor='black')
+    plt.suptitle('Histograms of Temperature Variables', fontsize=16)
+    plt.tight_layout()
+    plt.show()
+
+    # Histogram for wind speed
+    df[['WS']].hist(bins=20, figsize=(6, 5), color='orange', edgecolor='black')
+    plt.suptitle('Histogram of Wind Speed', fontsize=16)
+    plt.tight_layout()
+    plt.show()
+
 
 
 
