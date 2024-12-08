@@ -128,6 +128,17 @@ def histograms(df):
     plt.show()
 
 
+def z_score_analysis(df, columns, threshold=3):
+    z_scores = df[columns].apply(lambda x: (x - x.mean()) / x.std())
+    flagged_outliers = (z_scores.abs() > threshold).any(axis=1)
+
+    # Add Z-scores and outlier flags to the DataFrame
+    for col in columns:
+        df[f"{col}_zscore"] = z_scores[col]
+    df["Outlier_Flag"] = flagged_outliers
+
+    return df
+
 
 
 
