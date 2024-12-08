@@ -127,7 +127,7 @@ def histograms(df):
     plt.tight_layout()
     plt.show()
 
-
+# z-score analysis
 def z_score_analysis(df, columns, threshold=3):
     z_scores = df[columns].apply(lambda x: (x - x.mean()) / x.std())
     flagged_outliers = (z_scores.abs() > threshold).any(axis=1)
@@ -139,6 +139,19 @@ def z_score_analysis(df, columns, threshold=3):
 
     return df
 
+# Buble chart
+def bubble_chart(df, x_col, y_col, size_col, color_col, title):
+     plt.figure(figsize=(10, 6))
+     scatter = plt.scatter(
+        df[x_col], df[y_col],
+        s=df[size_col] * 10,  
+        c=df[color_col], cmap='viridis', alpha=0.7, edgecolors='k')
+     plt.colorbar(scatter, label=color_col)
+     plt.xlabel(x_col)
+     plt.ylabel(y_col)
+     plt.title(title)
+     plt.grid(alpha=0.3)
+     plt.show()
 
 
 
