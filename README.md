@@ -58,20 +58,20 @@
 
 An interactive Jupyter notebook (eda.ipynb) was created to allow for exploratory analysis in an interactive environment. The notebook provides a step-by-step EDA process with visualizations and commentary.
 
-# Unit Testing
+# Dashboard Development using streamlite
 
-Unit tests were implemented in the tests/test_eda.py file to ensure that the EDA functions work as expected.
+## dashboard developed using Streamlit-that consists of three main modules:
 
-# Execution Script
-
-The scripts/run_eda.sh bash script automates the EDA process. Running this script performs the analysis on the dataset and generates a report of the findings.
-
++ EDA Report Dashboard (app.py): A dashboard for visualizing and analyzing exploratory data analysis (EDA) results.
++ Login Page (main.py): A secure login page to authenticate users.
++ Home Page (utils.py): The application's main page after login, containing relevant utilities and navigation options.
 # Contributions
 
 - Environment Setup: Configured the Python environment, set up Git version control, and implemented CI/CD workflows.
 - EDA Development: Developed the EDA functions in eda.py, conducted a thorough analysis, and cleaned the data.
 - Statistical Analysis: Performed Z-score analysis to detect outliers in the dataset.
 - Interactive Analysis: Provided a Jupyter notebook for interactive EDA, allowing others to explore the data and analysis steps.
+- Dashboard Development using streamlit
 
 # summary
 
