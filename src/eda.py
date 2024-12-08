@@ -153,5 +153,27 @@ def bubble_chart(df, x_col, y_col, size_col, color_col, title):
      plt.grid(alpha=0.3)
      plt.show()
 
+# data cleaning
+def data_cleaning(df):
+    # Fill missing values with the median for numerical columns
+    df.fillna(df.median(numeric_only=True), inplace=True)
+    
+    # Remove negative values from solar radiation columns
+    df = df[(df['GHI'] >= 0) & (df['DNI'] >= 0) & (df['DHI'] >= 0)]
+    
+    # Drop irrelevant columns
+    if 'Comments' in df.columns:
+        df = df.drop(columns=['Comments'])
+    
+    return df
+
+def detect_outliers(df, column, threshold=3):   
+    mean = df[column].mean()
+    std_dev = df[column].std()
+    z_scores = (df[column] - mean) / std_dev
+    outliers = df[np.abs(z_scores) > threshold]
+    return outliers
+        
+
 
 
